@@ -1,0 +1,124 @@
+Database Schema Overview
+-----------
+
+Project Time Table Management System
+-----------
+
+Student
+Stores student details participating in projects.
+
+Attributes:
+student_id (PK), roll_no, name, department, academic_year, gender, phone, email
+
+Relationships:
+A student can join a project group, attend multiple sessions/reviews, and submit project deliverables.
+
+-----------
+
+Faculty
+Represents faculty members who act as guides/evaluators.
+
+Attributes:
+faculty_id (PK), name, department, designation, phone, email
+
+Relationships:
+A faculty can guide multiple project groups and can be assigned in multiple timetable sessions.
+
+-----------
+
+Project
+Stores details about projects.
+
+Attributes:
+project_id (PK), title, domain, description, status, academic_year, semester
+
+Relationships:
+A project has one group, one guide, multiple review sessions, and multiple submissions.
+
+-----------
+
+Project_Group
+Represents groups formed for projects.
+
+Attributes:
+group_id (PK), project_id (FK), guide_id (FK -> Faculty), group_name, group_size
+
+Relationships:
+A group has multiple students and is linked to one project.
+
+-----------
+
+Group_Member
+Links students with project groups.
+
+Attributes:
+member_id (PK), group_id (FK), student_id (FK), role (leader/member)
+
+Relationships:
+Each student belongs to one group (generally) and each group has multiple students.
+
+-----------
+
+Room
+Represents rooms/labs where project sessions take place.
+
+Attributes:
+room_id (PK), room_number, room_type (lab/classroom), capacity
+
+Relationships:
+A room can host multiple timetable sessions.
+
+-----------
+
+TimeSlot
+Stores time slot details for scheduling.
+
+Attributes:
+slot_id (PK), day_of_week, start_time, end_time
+
+Relationships:
+A time slot can be used in multiple sessions.
+
+-----------
+
+Session
+Represents scheduled sessions (review/demo/presentation/guide meeting).
+
+Attributes:
+session_id (PK), group_id (FK), faculty_id (FK), room_id (FK), slot_id (FK), session_type, session_date, status
+
+Relationships:
+Each session is assigned to a group, faculty, room, and a timeslot.
+
+-----------
+
+Review
+Stores details of evaluation reviews.
+
+Attributes:
+review_id (PK), session_id (FK), review_number (1/2/3), marks, remarks, status
+
+Relationships:
+Each review is linked to one session.
+
+-----------
+
+Submission
+Stores deliverables submitted by project groups.
+
+Attributes:
+submission_id (PK), group_id (FK), submission_type (report/code/ppt), submitted_date, file_link, status
+
+Relationships:
+A group can submit multiple submissions over time.
+
+-----------
+
+Notification
+Stores alerts/announcements related to timetable or deadlines.
+
+Attributes:
+notification_id (PK), message, created_date, target (student/group/faculty), status
+
+Relationships:
+Notifications can be sent for multiple sessions/reviews/submissions.
