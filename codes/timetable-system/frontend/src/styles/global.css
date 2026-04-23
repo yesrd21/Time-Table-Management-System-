@@ -1,0 +1,267 @@
+/* src/styles/global.css */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg: #0b1120;
+  --bg-card: #111827;
+  --bg-hover: #182033;
+  --border: #1e2d45;
+  --border-light: #2a3a58;
+
+  --accent: #3b82f6;
+  --accent-hover: #2563eb;
+  --accent-glow: rgba(59,130,246,0.2);
+
+  --teal: #14b8a6;
+  --amber: #f59e0b;
+  --red: #ef4444;
+  --green: #22c55e;
+
+  --text-1: #eef2f7;
+  --text-2: #9aa8bd;
+  --text-3: #5b6b82;
+
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --radius: 12px;
+  --radius-lg: 18px;
+
+  --shadow: 0 6px 28px rgba(0,0,0,0.45);
+  --shadow-glow: 0 0 18px rgba(59,130,246,0.18);
+}
+
+/* ── Reset ───────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { font-size: 15px; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text-1);
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Scrollbar (subtle) ───────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-light);
+  border-radius: 10px;
+}
+
+/* ── Layout ───────────────────────────── */
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 240px;
+  background: var(--bg-card);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 100;
+}
+
+.sidebar-logo {
+  padding: 22px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.sidebar-logo h2 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 0.3px;
+}
+
+.sidebar-logo span {
+  font-size: 0.7rem;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+/* Nav */
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  width: 100%;
+  padding: 10px 18px;
+
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-2);
+
+  background: none;
+  border: none;
+  border-left: 3px solid transparent;
+
+  text-align: left;
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+  color: var(--text-1);
+  background: var(--bg-hover);
+}
+
+.nav-item.active {
+  color: var(--accent);
+  background: var(--accent-glow);
+  border-left-color: var(--accent);
+}
+
+/* ── Main Content ─────────────────────── */
+.main-content {
+  margin-left: 240px;
+  padding: 28px 32px;
+}
+
+/* ── Header ───────────────────────────── */
+.page-header {
+  margin-bottom: 24px;
+}
+
+.page-header h1 {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+}
+
+.page-header p {
+  color: var(--text-2);
+  margin-top: 6px;
+}
+
+/* ── Cards ───────────────────────────── */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  border-color: var(--border-light);
+  box-shadow: var(--shadow-glow);
+}
+
+/* ── Stats ───────────────────────────── */
+.stat-card {
+  padding: 18px;
+  border-radius: var(--radius-lg);
+  transition: all 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+}
+
+.stat-value {
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+
+/* ── Timetable ───────────────────────── */
+.tt-cell-inner {
+  padding: 10px;
+  height: 78px;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.tt-cell-inner:hover {
+  background: var(--bg-hover);
+}
+
+/* ── Buttons ─────────────────────────── */
+.btn {
+  padding: 9px 16px;
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 0 10px rgba(59,130,246,0.4);
+}
+
+/* ── Forms ───────────────────────────── */
+.form-input,
+.form-select {
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  transition: all 0.2s ease;
+}
+
+.form-input:focus,
+.form-select:focus {
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+/* ── Tables ─────────────────────────── */
+.data-table td {
+  padding: 13px;
+}
+
+.data-table tr:hover td {
+  background: var(--bg-hover);
+}
+
+/* ── Modal ───────────────────────────── */
+.modal {
+  padding: 26px;
+  border-radius: var(--radius-lg);
+}
+
+/* ── Login ───────────────────────────── */
+.login-card {
+  padding: 36px;
+  border-radius: var(--radius-lg);
+
+  width: 100%;
+  max-width: 420px;
+
+  margin: auto; /* fallback centering */
+}
+
+/* ── Animations ─────────────────────── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.35s ease both;
+}
+
+.login-page {
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;     /* vertical center */
+  justify-content: center; /* horizontal center */
+}
